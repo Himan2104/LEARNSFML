@@ -31,8 +31,8 @@ sf::FloatRect Ball::getGB()
 
 void Ball::Update(sf::Vector2f& ballSpeed, float dt)
 {
-	if (body.getPosition().y - body.getSize().y < 0.0f) ballSpeed.y = -ballSpeed.y;
-	if (body.getPosition().y + body.getSize().y > 600.0f) ballSpeed.y = -ballSpeed.y;
+	if (body.getPosition().y - body.getSize().y/2.0f < 0.0f) ballSpeed.y = -ballSpeed.y;
+	if (body.getPosition().y + body.getSize().y/2.0f > 600.0f) ballSpeed.y = -ballSpeed.y;
 
 	body.move(ballSpeed.x * dt, ballSpeed.y * dt);
 }

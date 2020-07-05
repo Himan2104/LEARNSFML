@@ -3,18 +3,20 @@
 #include"defs.hpp"
 #include"Ball.hpp"
 #include"Paddle.hpp"
+#include"State.hpp"
 
-class Game
+class Game : public State
 {
 public:
 	Game();
 	~Game();
 
-	void run();
+	void init() override;
+	void update(float dt, sf::Vector2f mpos) override;
+	void render(sf::RenderTarget& target) override;
+	
 
 private:
-	sf::RenderWindow window;
-
 	sf::RectangleShape midLine;
 
 	Ball ball;
@@ -23,11 +25,7 @@ private:
 
 	unsigned int scoreA, scoreB;
 
-	float dt;
-
 	sf::Vector2f ballSpeed;
-
-	sf::Clock clk;
 
 	sf::Font font;
 	sf::Text score;

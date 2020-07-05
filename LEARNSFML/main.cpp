@@ -1,12 +1,12 @@
 #include"pch.h"
 #include<SFML/Graphics.hpp>
-#include"Game.hpp"
+#include"MainApplication.hpp"
 
 int main()
 {
-	Game game;
+	MainApplication xyz;
 
-	game.run();
+	xyz.run();
 
 	return 0;
 }

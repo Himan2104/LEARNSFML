@@ -21,7 +21,7 @@ void Paddle::Update(float dt)
 	if (sf::Keyboard::isKeyPressed(DOWN) && body.getPosition().y + body.getGlobalBounds().height / 2.0f < 600.0f) body.move(0.0f, paddleSpeed * dt);
 }
 
-void Paddle::Render(sf::RenderWindow& window)
+void Paddle::Render(sf::RenderTarget& window)
 {
 	window.draw(body);
 }

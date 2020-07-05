@@ -10,7 +10,7 @@ public:
 
 	void Update(float dt);
 
-	void Render(sf::RenderWindow& window);
+	void Render(sf::RenderTarget& window);
 
 	sf::FloatRect getGB();
 
