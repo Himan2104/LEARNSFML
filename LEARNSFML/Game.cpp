@@ -17,6 +17,8 @@ midLine({2.0f, 600.0f})
 	scoreA = 0;
 	scoreB = 0;
 
+	switchFrame = true;
+
 	font.loadFromFile("C:/Windows/Fonts/arial.ttf");
 	score.setFont(font);
 	score.setCharacterSize(30);
@@ -39,13 +41,36 @@ void Game::update(float dt, sf::Vector2f mpos, int& StateID)
 	{
 		ball.setPos({ 400.0f, 300.0f });
 		isServing = false;
+		aniClk.restart().asSeconds();
 	}
 
-	left.Update(dt);
-	right.Update(dt);
+	if (aniClk.getElapsedTime().asSeconds() > 0.5f)
+	{
+		switchFrame = true;
+		aniClk.restart().asSeconds();
+	}
+	else switchFrame = false;
 
-	if (left.getGB().intersects(ball.getGB())) ballSpeed.x = -ballSpeed.x;
-	if (right.getGB().intersects(ball.getGB())) ballSpeed.x = -ballSpeed.x;
+	left.Update(dt, switchFrame);
+	right.Update(dt, switchFrame);
+
+	if (left.getGB().intersects(ball.getGB()))
+	{
+		ballSpeed.x = -ballSpeed.x;
+		impact = true;
+		bclk.restart().asSeconds();
+	}
+	else if (right.getGB().intersects(ball.getGB()))
+	{
+		ballSpeed.x = -ballSpeed.x;
+		impact = true;
+		bclk.restart().asSeconds();
+	}
+
+	else
+	{
+		if (bclk.getElapsedTime().asSeconds() > 1.0f) impact = false;
+	}
 
 	if (ball.getPos().x < 0.0f)
 	{
@@ -59,7 +84,7 @@ void Game::update(float dt, sf::Vector2f mpos, int& StateID)
 		isServing = true;
 	}
 
-	ball.Update(ballSpeed, dt);
+	ball.Update(ballSpeed, dt, impact);
 
 
 	score.setString(std::to_string(scoreA) + "\t" + std::to_string(scoreB));

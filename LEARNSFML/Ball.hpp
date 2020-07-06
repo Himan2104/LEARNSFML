@@ -14,12 +14,15 @@ public:
 
 	sf::Vector2f getPos();
 
-	void Update(sf::Vector2f& ballSpeed, float dt);
+	void Update(sf::Vector2f& ballSpeed, float dt, bool impact);
 
 	void Render(sf::RenderTarget& window);
 
 private:
+	sf::Texture txr;
 	sf::RectangleShape body;
+
+	sf::IntRect rect;
 
 };
 

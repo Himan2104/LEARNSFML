@@ -30,6 +30,10 @@ private:
 	sf::Font font;
 	sf::Text score;
 
+	sf::Clock aniClk, bclk;
+	bool switchFrame;
+	bool impact;
+
 	bool isServing;
 };
 
