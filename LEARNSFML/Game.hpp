@@ -12,7 +12,7 @@ public:
 	~Game();
 
 	void init() override;
-	void update(float dt, sf::Vector2f mpos) override;
+	void update(float dt, sf::Vector2f mpos, int& StateID) override;
 	void render(sf::RenderTarget& target) override;
 	
 

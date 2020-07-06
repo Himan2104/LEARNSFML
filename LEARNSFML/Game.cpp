@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Game.hpp"
 
 Game::Game() : ball(ballSpeed), 
@@ -34,7 +33,7 @@ void Game::init()
 {
 }
 
-void Game::update(float dt, sf::Vector2f mpos)
+void Game::update(float dt, sf::Vector2f mpos, int& StateID)
 {
 	if (isServing)
 	{

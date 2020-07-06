@@ -1,8 +1,8 @@
-#include "pch.h"
 #include "MainMenu.hpp"
 
 MainMenu::MainMenu()
 {
+	init();
 }
 
 MainMenu::~MainMenu()
@@ -36,14 +36,14 @@ void MainMenu::init()
 	quit.setPosition(400.0f, 400.0f);
 }
 
-void MainMenu::update(float dt, sf::Vector2f mpos)
+void MainMenu::update(float dt, sf::Vector2f mpos, int& StateID)
 {
 	if (play.getGlobalBounds().contains(mpos))
 	{
 		play.setFillColor(sf::Color::Green);
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			std::cout << "PLAY";
+			StateID = 2;
 		}
 	}
 	else play.setFillColor(color);
@@ -53,7 +53,7 @@ void MainMenu::update(float dt, sf::Vector2f mpos)
 		quit.setFillColor(sf::Color::Green);
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			std::cout << "EXIT";
+			StateID = -1;
 		}
 	}
 	else quit.setFillColor(color);

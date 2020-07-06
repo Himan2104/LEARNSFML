@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Paddle.hpp"
 
 Paddle::Paddle(sf::Vector2f size, std::pair<sf::Keyboard::Key, sf::Keyboard::Key> controls, sf::Vector2f initPos)

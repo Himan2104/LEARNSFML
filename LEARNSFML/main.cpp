@@ -1,4 +1,3 @@
-#include"pch.h"
 #include<SFML/Graphics.hpp>
 #include"MainApplication.hpp"
 

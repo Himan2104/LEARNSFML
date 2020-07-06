@@ -1,6 +1,9 @@
 #pragma once
 #include"defs.hpp"
 #include"State.hpp"
+#include"MainMenu.hpp"
+#include"Game.hpp"
+#include"SplashScreen.hpp"
 
 class MainApplication
 {
@@ -10,14 +13,27 @@ public:
 
 	void run();
 
+	void closeApplication();
+
 private:
 	sf::RenderWindow window;
-
+	sf::Clock clk;
 	float dt;
 
-	State* gameState;
+	SplashScreen spl;
+	Game game;
+	MainMenu mainmenu;
 
-
-	sf::Clock clk;
+	void changeState();
+	State* cState;
+	int StateID;
+	int prevState;
+	/*
+	-1 : close;
+	0  : SplashScreen;
+	1  : MainMEnu;
+	2  : GameState;
+	*/
+	
 };
 

@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Ball.hpp"
 
 Ball::Ball(sf::Vector2f ballSpeed)

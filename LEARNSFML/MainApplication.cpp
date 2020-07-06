@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "MainApplication.hpp"
 #include"MainMenu.hpp"
 #include"Game.hpp"
@@ -9,9 +8,9 @@ MainApplication::MainApplication()
 	window.setFramerateLimit(60);
 
 	dt = 0;
-
-	gameState = new MainMenu();
-	gameState->init();
+	StateID = 0;
+	prevState = 0;
+	changeState();
 }
 
 MainApplication::~MainApplication()
@@ -22,6 +21,9 @@ void MainApplication::run()
 {
 	while (window.isOpen())
 	{
+		if (prevState != StateID) changeState();
+		prevState = StateID;
+
 		dt = clk.restart().asSeconds();
 
 		sf::Event event;
@@ -30,10 +32,32 @@ void MainApplication::run()
 			if (event.type == sf::Event::Closed) window.close();
 		}
 
-		gameState->update(dt, sf::Vector2f(sf::Mouse::getPosition(window)));
+		cState->update(dt, sf::Vector2f(sf::Mouse::getPosition(window)), StateID);
 
 		window.clear();
-		gameState->render(window);
+		cState->render(window);
 		window.display();
+	}
+}
+
+void MainApplication::closeApplication()
+{
+	window.close();
+}
+
+void MainApplication::changeState()
+{
+	switch (StateID)
+	{
+	case -1: window.close();
+		break;
+	case 0: cState = &spl;
+		break;
+	case 1: cState = &mainmenu;
+		break;
+	case 2: cState = &game;
+		break;
+	default:
+		break;
 	}
 }
