@@ -1,14 +1,14 @@
 #include "Game.hpp"
 
 Game::Game() : ball(ballSpeed), 
-left(default_paddle_size, std::make_pair(sf::Keyboard::W, sf::Keyboard::S), {10.0f, 300.0f}),
-right(default_paddle_size, std::make_pair(sf::Keyboard::Up, sf::Keyboard::Down), {790.0f, 300.0f}),
-midLine({2.0f, 600.0f})
+left(default_paddle_size, std::make_pair(sf::Keyboard::W, sf::Keyboard::S), {50.0f, 360.0f}),
+right(default_paddle_size, std::make_pair(sf::Keyboard::Up, sf::Keyboard::Down), {1230.0f, 360.0f}),
+midLine({2.0f, 720.0f})
 {
 
-	midLine.setPosition(400.0f, 0.0f);
+	midLine.setPosition(Vmode.width/2.0f, 0.0f);
 
-	ballSpeed = sf::Vector2f(100.0f, 100.0f);
+	ballSpeed = sf::Vector2f(500.0f, 500.0f);
 
 	isServing = true;
 	
@@ -17,11 +17,12 @@ midLine({2.0f, 600.0f})
 	scoreA = 0;
 	scoreB = 0;
 
+	impact = false;
 	switchFrame = true;
 
 	font.loadFromFile("C:/Windows/Fonts/arial.ttf");
 	score.setFont(font);
-	score.setCharacterSize(30);
+	score.setCharacterSize(50);
 
 	midLine.setFillColor(color);
 	score.setFillColor(color);
@@ -78,7 +79,7 @@ void Game::update(float dt, sf::Vector2f mpos, int& StateID)
 		isServing = true;
 	}
 
-	if (ball.getPos().x > 800.0f)
+	if (ball.getPos().x > 1280.0f)
 	{
 		scoreA++;
 		isServing = true;
@@ -89,7 +90,7 @@ void Game::update(float dt, sf::Vector2f mpos, int& StateID)
 
 	score.setString(std::to_string(scoreA) + "\t" + std::to_string(scoreB));
 	score.setOrigin(score.getGlobalBounds().width / 2.0f, score.getGlobalBounds().height / 2.0f);
-	score.setPosition(400.0f, 20.0f);
+	score.setPosition(Vmode.width/2.0f, 20.0f);
 }
 
 void Game::render(sf::RenderTarget& target)

@@ -22,7 +22,7 @@ Paddle::~Paddle()
 void Paddle::Update(float dt, bool switchFrame)
 {
 	if (sf::Keyboard::isKeyPressed(UP) && body.getPosition().y - body.getGlobalBounds().height/2.0f > 0.0f) body.move(0.0f, -paddleSpeed * dt);
-	if (sf::Keyboard::isKeyPressed(DOWN) && body.getPosition().y + body.getGlobalBounds().height / 2.0f < 600.0f) body.move(0.0f, paddleSpeed * dt);
+	if (sf::Keyboard::isKeyPressed(DOWN) && body.getPosition().y + body.getGlobalBounds().height / 2.0f < 720.0f) body.move(0.0f, paddleSpeed * dt);
 	if (switchFrame)
 	{
 		if (rect.left == 90) rect.left = 0;

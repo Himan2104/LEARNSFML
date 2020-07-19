@@ -5,7 +5,7 @@
 MainApplication::MainApplication()
 {
 	window.create(Vmode, "Pomg");
-	window.setFramerateLimit(60);
+	window.setFramerateLimit(frameRate);
 
 	dt = 0;
 	StateID = 0;

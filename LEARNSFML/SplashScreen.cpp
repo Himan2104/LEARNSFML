@@ -13,6 +13,8 @@ void SplashScreen::init()
 {
 	txr.loadFromFile("goat.png");
 	sp.setTexture(txr);
+	sp.setOrigin(sp.getGlobalBounds().width / 2.0f, sp.getGlobalBounds().height / 2.0f);
+	sp.setPosition(Vmode.width / 2.0f, Vmode.height / 2.0f);
 	clk.restart().asSeconds();
 	alpha = 0;
 }
